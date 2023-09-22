@@ -6,11 +6,46 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+<ion-header class="ion-padding">
+  <ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="infAdicional">
+      <ion-label>Home</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="expLaboral">
+      <ion-label>Experiencia Laboral</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="certificaciones">
+      <ion-label>Certificaciones</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="misDatos">
+      <ion-label>Mis Datos</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
 
 <ion-content [fullscreen]="true">
   <h1 class="ion-text-center ion-padding" id='titulo'>Bienvenido!</h1>
   <p class="ion-text-start ion-margin">Usuario: {{ usuario }}</p>
+  <!-- Contenido para "Experiencia Laboral" -->
 
+  <div *ngIf="isSegmentSelected('expLaboral')">
+    <h5 class="ion-text-center ion-padding">Información Experiencia Laboral</h5>
+    <!-- Agrega aquí los campos específicos para "Experiencia Laboral" -->
+  </div>
+
+  <!-- Contenido para "Certificaciones" -->
+  <div *ngIf="isSegmentSelected('certificaciones')">
+    <h5 class="ion-text-center ion-padding">Información Certificaciones</h5>
+    <!-- Agrega aquí los campos específicos para "Certificaciones" -->
+  </div>
+
+  <!-- Contenido para "Mis Datos" -->
+  <div *ngIf="isSegmentSelected('misDatos')">
+    <h5 class="ion-text-center ion-padding">Información Mis Datos</h5>
+    <!-- Agrega aquí los campos específicos para "Mis Datos" -->
+  </div>
+  <div *ngIf="isSegmentSelected('infAdicional')">
   <h5 class="ion-text-center ion-padding">Información Adicional</h5>
   <div class="ion-padding">
     <ion-list>
@@ -27,7 +62,7 @@
           <ion-select-option value="es">Enseñanza Superior</ion-select-option>
         </ion-select>
       </ion-item>
-      
+
       <ion-item>
         <!-- <ion-label>Fecha Nacimiento</ion-label> -->
         <!-- <ion-datetime-button datetime="datetime"></ion-datetime-button>
@@ -43,7 +78,7 @@
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        
+
       </ion-item>
     </ion-list>
   </div>
@@ -53,8 +88,9 @@
         <ion-button (click)="limpiar()" (click)="ejecutarAnimacion()">Limpiar</ion-button>
       </ion-col>
       <ion-col size="4">
-        <ion-button (click)="mostrar()">Mostrar</ion-button> 
+        <ion-button (click)="mostrar()">Mostrar</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
+</div>
 </ion-content>

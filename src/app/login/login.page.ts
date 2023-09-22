@@ -19,7 +19,7 @@ export class LoginPage implements OnInit {
 
   constructor(private alertController: AlertController,
     private animationCtrl: AnimationController,
-    private router: Router, 
+    private router: Router,
     private activatedRoute: ActivatedRoute) { }
     usuario:string ='';
     contrasenia: number | null = null;
@@ -45,7 +45,7 @@ export class LoginPage implements OnInit {
     // if (this.compartirDatosService.usuario) {
     //   this.usuario = this.compartirDatosService.usuario;
     // }
-    
+
   }
   limpiar() {
     this.nombre = '';
@@ -53,7 +53,7 @@ export class LoginPage implements OnInit {
     this.nivelEducacional = '';
     this.fechaNacimiento.value = '';
   }
-  
+
   // fechaNacimientoChange(event: CustomEvent) {
   //   this.fechaNacimiento = event.detail.value || '';
   // }
@@ -63,9 +63,9 @@ export class LoginPage implements OnInit {
   } */
   mostrarUsuario(){
     this.usuario = this.activatedRoute.snapshot.params["username"];
-    
+
   }
-  
+
   ngAfterViewInit() {
     this.animacionInputs = this.animationCtrl
     .create()
@@ -79,7 +79,7 @@ export class LoginPage implements OnInit {
   ejecutarAnimacion() {
     let transformInicial : string;
     let opacidadInicial : string;
-    
+
     this.animacionInputs.stop();
     this.inputs.forEach((element: ElementRef) => {
       transformInicial = element.nativeElement.style.transform;
@@ -88,17 +88,17 @@ export class LoginPage implements OnInit {
       element.nativeElement.style.opacity = '1';
       this.animacionInputs.addElement(element.nativeElement);
     });
-    
+
     this.animacionInputs.play();
-    
+
     this.animacionInputs.onFinish(() => {
       this.inputs.forEach((element: ElementRef) => {
         element.nativeElement.style.transform = transformInicial;
         element.nativeElement.style.opacity = opacidadInicial;
       });
-      
+
       this.animacionInputs.stop();
-    });      
+    });
   }
 
   // cerrarSesion() {
@@ -116,7 +116,7 @@ export class LoginPage implements OnInit {
   // setTimeout(() => {
   //   window.location.href = '/home';
   //   }, 1000);
- 
+
   // }
 
   async cerrarSesion() {
@@ -141,5 +141,15 @@ export class LoginPage implements OnInit {
 
     await alert.present();
   }
-  
+
+  segment: string = 'expLaboral'; // Establece un valor inicial
+
+  segmentChanged(event: any) {
+    this.segment = event.detail.value;
+  }
+
+  isSegmentSelected(segment: string): boolean {
+    return this.segment === segment;
+  }
+
 }
