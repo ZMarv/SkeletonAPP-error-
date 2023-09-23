@@ -20,6 +20,6 @@ import {MatNativeDateModule} from '@angular/material/core';
     IonicModule,
     LoginPageRoutingModule,MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule
   ],
-  declarations: [LoginPage]
+  declarations: [LoginPage],
 })
 export class LoginPageModule {}

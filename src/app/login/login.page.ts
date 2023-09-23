@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChildren, ViewChild} from '@angular/core';
 import type { QueryList } from '@angular/core';
 import type { Animation } from '@ionic/angular';
-import { AlertController, AnimationController, IonInput } from '@ionic/angular';
+import { AlertController, AnimationController, IonInput, ModalController } from '@ionic/angular';
 
 import { Router } from '@angular/router';
 import {MatInput} from '@angular/material/input';
@@ -12,15 +12,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  checkBoxVencimiento: boolean = false;
+  checkBoxTrabajo: boolean = false;
   @ViewChildren(IonInput, { read: ElementRef }) inputs!: QueryList<ElementRef>;
   @ViewChild('fechaNacimiento', { read: MatInput }) fechaNacimiento!: MatInput;
+  // @ViewChild('checkBoxVencimiento') checkBoxVencimiento: any;
 
   private animacionInputs!: Animation;
 
   constructor(private alertController: AlertController,
     private animationCtrl: AnimationController,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,) {}
     usuario:string ='';
     contrasenia: number | null = null;
     nombre: string = '';
@@ -142,7 +145,7 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  segment: string = 'expLaboral'; // Establece un valor inicial
+  segment: string = 'misDatos';
 
   segmentChanged(event: any) {
     this.segment = event.detail.value;
@@ -151,5 +154,13 @@ export class LoginPage implements OnInit {
   isSegmentSelected(segment: string): boolean {
     return this.segment === segment;
   }
+
+  // toggleDatepicker(checkbox: any) {
+  //   if (checkbox.checked) {
+  //     this.checkBoxVencimiento.disabled = false;
+  //   } else {
+  //     this.checkBoxVencimiento.disabled = true;
+  //   }
+  // }
 
 }

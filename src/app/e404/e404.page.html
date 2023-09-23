@@ -1,18 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>e404</ion-title>
+    <ion-title>Error</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-img src="/assets/imagenes/e404.svg"></ion-img>
-  <ion-button [routerLink]="['/home']" routerLinkActive="router-link-active" class="ion-margin-top">
-    <ion-icon name="home" slot="end"></ion-icon>
-    Volver al Home
-  </ion-button>
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">e404</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="ion-margin-top ion-text-center ion-align-items-center">
+  <br><h1>Págino no encontrada</h1><br>
+  <ion-img src="/assets/imagenes/e404.svg"></ion-img><br>
+  
+  <ion-button [routerLink]="['/home']" routerLinkActive="router-link-active" class="ion-margin-top ion-text-center">
+    <ion-icon name="home" slot="end"></ion-icon> Volver al Home
+  </ion-button></div>
 </ion-content>
